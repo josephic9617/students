@@ -81,10 +81,10 @@ namespace welcome_api.Controllers
         }
 
         [HttpDelete("deleteStudentsNotes/{studentid}")]
-        public async Task<IActionResult> DeleteStudentsNotes(int studentid)
+        public async Task<ActionResult<int>> DeleteStudentsNotes(int studentid)
         {
             int count = await _context.Notes.Where(f => f.StudentId == studentid).ExecuteDeleteAsync();
-            return Ok(count);
+            return count;
         }
 
         [HttpGet("{studentid}/notes")]
