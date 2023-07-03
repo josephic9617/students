@@ -51,12 +51,12 @@ namespace welcome_api.Controllers
         }
 
         [HttpPost("addNote")]
-        public async Task<IActionResult> AddNote([FromBody] StudentNoteDto noteDto)
+        public async Task<ActionResult> AddNote([FromBody] StudentNoteDto noteDto)
         {
             var note = noteDto.ToModel();
             if (note == null)
             {
-                return BadRequest("Maglumat Ýalňyş!");
+                return BadRequest("Maglumat Ýalňyş girizdiňiz!");
             }
             _context.Notes.Add(note);
             int count = await _context.SaveChangesAsync();
